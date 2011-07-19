@@ -1,6 +1,12 @@
+header,.main {
+  overflow: visible;
+}
+.main> header{
+}
 nav {
   background:#333;
   border-radius: 5px;
+  box-shadow: 0 0 30px #555;
   text-transform: uppercase;
 }
 nav a {
@@ -8,4 +14,10 @@ nav a {
 }
 nav a:hover {
   background: #666
+}
+section {
+  border-bottom:10px solid #ccc;
+}
+section section {
+  border-bottom: none;
 }
