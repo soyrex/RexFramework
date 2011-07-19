@@ -1,0 +1,332 @@
+//////////////////////////////////
+// CONFIGURATION      
+//////////////////////////////////
+@font:Helvetica, Arial, sans-serif;
+@basefontsize: 12pt;
+@pad: 3%;
+@basewidth: 90%;
+@maxwidth: 1800px; 
+
+@widthfix: 2*@pad;
+
+.debug { 
+  //outline:1px dotted red;
+}
+.transall{ 
+  //@anim:all 0.4s ease-in-out;
+  //-webkit-transition: @anim;
+  //-moz-transition: @anim;
+  //transition: @anim;
+}
+.transwidth { 
+  @anim: width 0.4s ease-in-out;
+  -webkit-transition: @anim;
+  -moz-transition: @anim;
+  transition: @anim;
+}
+//////////////////////////////////
+body {
+    .transall;
+  padding: 0;
+  margin: 0;
+  font-size: @basefontsize;
+  font-family: @font;
+}
+h1,h2,h3,h4,h5,h6,ul,li,p,div{
+  padding: 0;
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6,ul,li,p{
+  margin-bottom: 0.5em;
+}
+.main {
+  display: block;
+  width: @basewidth;
+  max-width: @maxwidth;
+  margin: auto;
+  overflow: hidden;
+
+  .debug;
+  .transwidth;
+
+  .content {
+    .debug;
+  }
+}
+nav {
+  ul,li {
+    display: inline;
+  }
+  ul li a {
+    display: block;
+    padding: @pad;
+    text-decoration: none;
+  }
+  ul li a:hover {
+    text-decoration: underline;
+  }
+}
+.main > header {
+  h1,h2,h3 {
+    padding: @pad;
+  }
+}
+header {
+  position: relative;
+  .debug;
+  overflow: hidden;
+  clear: both;
+  h1,h2,h3 {
+    margin: 0;
+  }
+
+  nav { 
+    overflow: hidden;
+    ul li a {
+      float: left;
+    }
+  }
+}
+section {
+  padding-bottom: @pad;
+
+  header {
+    padding: @pad;
+    padding-bottom: 0;
+     h1, h2, h3 {
+      display: block;
+    }
+  }
+  
+}
+section.sequence {
+  clear: both;
+  overflow: hidden;
+  .item {
+    float: left;
+    padding: @pad;
+
+    .lead{
+      width: 100%;
+      height: auto;
+      margin-bottom: @pad;
+    }
+  }
+  &.four {
+    div.item { 
+      width: 25%-@widthfix;
+    }
+  }
+  &.three {
+    div.item { 
+      width: 33.33%-@widthfix;
+    }
+  }
+}
+section.columns {
+  overflow: hidden;
+  .debug;
+  .column {
+    float: left;
+    padding-bottom: 999pt;
+    margin-bottom: -990pt;
+  }
+}
+
+section.five {
+  .column {
+    width: 20%-(2*@pad);
+    padding: @pad;
+    .debug;
+  }
+}
+
+section.four {
+  .column {
+    width: 25%-(2*@pad);
+    padding: @pad;
+    .debug;
+  }
+}
+section.three {
+  @colwidth: 33.33%;
+  .column {
+    width: 33%-(2*@pad);
+    padding: @pad;
+  }
+  .debug;
+  .column.double {
+    width: 33%*2 - (2*@pad);
+  }
+}
+.hero { 
+  width: auto;
+  float: none;
+  clear: both;
+}
+.hero-first {
+  .column:first-of-type {
+    .hero;
+  }
+}
+.hero-first-last {
+  .column:first-of-type,
+  .column:last-of-type{
+    .hero;
+  }
+}
+/////////////////////////////
+// FOR 1200 and less:
+.width1200px {
+  section.five {
+    .column {
+      width: 25%-@widthfix;
+    }
+    .hero-first;
+  }
+
+  section.sequence { 
+    div.item {
+      position: relative;
+      clear: both;
+      width: 100%-@widthfix!important;
+      
+      .lead {
+        margin-bottom:0;
+        margin-right: @pad;
+        width: 200px;
+        height: 200px;
+        float: left;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .width1200px;
+}
+
+/////////////////////////////
+// FOR 960 and less:
+.doublepad { 
+  @mypad: @pad*1;
+  @widthfix: @mypad*2;
+}
+.width960px { 
+  .main { 
+    .transall;
+  }
+  section.four {
+    div.column {
+      width: 50%-@widthfix;
+    }
+    .hero-first-last;
+  }
+  section.five {
+    div.column {
+      width: 33%-@widthfix;
+    }
+    .hero-first-last;
+  }
+  section.three {
+    div.column {
+      width: 50%-@widthfix;
+    }
+    div.column.double {
+      width: 100%-@widthfix;
+    }
+    .hero-first;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .width960px;
+}
+@media only screen and (max-width: 900px) {
+  .main { 
+    width: 90%;
+    .transwidth;
+  }
+}
+.mobilenav { 
+  @mypad: @pad*2;
+  .main > header {
+    padding-top: @mypad * 3;
+    nav {
+      border-radius: 0;
+      position: absolute; 
+      top: 0;
+      width: 100%;
+      ul li a { 
+        padding: @mypad;
+      }
+    }
+  }
+}
+.width480px {
+  @mypad: @pad*2;
+  @widthfix: @mypad * 2;
+  .main > header {
+    h1,h2,h3 {
+      padding: @mypad;
+    }
+  }
+  .mobilenav;
+  .main { 
+    width: 100%;
+    .transwidth;
+  }
+  section.columns,section.sequence {
+    header {
+      padding: @mypad;
+    }
+    .column,.item {
+      width: 100%-@widthfix!important;
+      padding: @mypad;
+      clear: both!important;
+    }
+  }
+}
+@media only screen and (max-device-width: 480px) and (orientation: portrait) {
+  body {
+    font-size: 40pt;
+    .transall;
+  }
+  .width480px;
+}
+@media only screen and (max-device-width: 480px) and (orientation: landscape) {
+  body {
+    font-size: 24pt;
+    .transall;
+  }
+  .mobilenav;
+  .doublepad;
+  .width960px;
+  .main {
+    width: 100%;
+  }
+  
+}
+@media (max-width: 480px)  {
+  .width480px;
+}
+// Raise font sizees for larger screens:
+@media  only screen and (min-width: 1000px) {
+  body {
+    font-size: 13pt;
+  }
+}
+@media  only screen and (min-width: 1500px) {
+  body {
+    font-size: 14pt;
+  }
+}
+@media  only screen and (min-width: 2000px) {
+  body {
+    font-size: 15pt;
+  }
+}
+section.columns {
+  .column {
+    padding-bottom: 999pt;
+    margin-bottom: -999pt;
+  }
+}
