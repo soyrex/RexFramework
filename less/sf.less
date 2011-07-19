@@ -59,7 +59,7 @@ nav {
   }
   ul li a {
     display: block;
-    padding: @pad;
+    padding: 1em;
     text-decoration: none;
   }
   ul li a:hover {
@@ -68,7 +68,7 @@ nav {
 }
 .main > header {
   h1,h2,h3 {
-    padding: @pad;
+    padding: @pad/2 @pad;
   }
 }
 header {
@@ -93,9 +93,6 @@ section {
   header {
     padding: @pad;
     padding-bottom: 0;
-     h1, h2, h3 {
-      display: block;
-    }
   }
   
 }
@@ -255,9 +252,6 @@ section.three {
       position: absolute; 
       top: 0;
       width: 100%;
-      ul li a { 
-        padding: @mypad;
-      }
     }
   }
 }
@@ -266,7 +260,8 @@ section.three {
   @widthfix: @mypad * 2;
   .main > header {
     h1,h2,h3 {
-      padding: @mypad;
+      padding: @pad;
+      padding-bottom: 0;
     }
   }
   .mobilenav;
